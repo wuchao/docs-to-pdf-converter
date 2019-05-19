@@ -81,6 +81,8 @@ docx4j: http://www.docx4java.org/
 odfdom: https://incubator.apache.org/odftoolkit/odfdom/  
 and others...  
 
+> plutext 的 Aspose.Words-for-Java（收费）可以比较完美地将 doc 转成 docx，doc/docx 转成 pdf。
+
 ## Compiling the code
 
 ### I just want the jar
