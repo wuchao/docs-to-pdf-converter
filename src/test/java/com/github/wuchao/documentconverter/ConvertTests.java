@@ -9,13 +9,6 @@ public class ConvertTests {
     String officeHome = "D:\\Program Files\\LibreOffice";
     String fileDir = System.getProperty("user.dir") + File.separator + "files" + File.separator;
 
-    // web 访问时需要映射到该目录
-    String resourceDir = System.getProperty("user.dir") + File.separator +
-            "src" + File.separator +
-            "main" + File.separator +
-            "resources" + File.separator +
-            "static" + File.separator + "images" + File.separator;
-
     @Test
     public void testDoc2Pdf() throws Exception {
         InputStream inputStream = new FileInputStream(fileDir + "DocStructures.doc");

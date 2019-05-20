@@ -109,7 +109,7 @@ public class WordToHtml {
     }
 
     /**
-     * 读取docx文件
+     * 读取 docx 文件
      *
      * @param docx
      */
@@ -152,7 +152,7 @@ public class WordToHtml {
     }
 
     /**
-     * 处理docx文档的图片
+     * 处理 docx 文档的图片
      *
      * @param pics
      * @param document

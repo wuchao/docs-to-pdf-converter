@@ -8,9 +8,7 @@ import com.jacob.com.ComThread;
 import com.jacob.com.Dispatch;
 import com.jacob.com.Variant;
 import lombok.extern.slf4j.Slf4j;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -163,7 +161,7 @@ public class DocToPDFConverter extends Converter {
      * System.getProperty("java.library.path") 的值:
      * D:\Program Files\Java\java-1.8.0-openjdk-1.8.0.181\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\Program Files\Git\cmd;%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;%GRADLE_HOME%\bin;D:\Program Files\Gradle\gradle-3.5\bin;%OPEN_JDK_HOME%\bin;%OPEN_JDK_HOME%\jre\bin;D:\Program Files\Gradle\gradle-4.9\bin;C:\Users\wu947\AppData\Local\Microsoft\WindowsApps;D:\Program Files\Microsoft\VS Code\bin;C:\Users\wu947\AppData\Local\Microsoft\WindowsApps;;.
      */
-    /*@Override
+    @Override
     public void convert() {
 
         loading();
@@ -171,20 +169,6 @@ public class DocToPDFConverter extends Converter {
         processing();
 
         convertWordFmt(fromFilePath, toFilePath, toFormat);
-
-        finished();
-    }*/
-    @Override
-    public void convert() throws IOException, ParserConfigurationException, SAXException {
-
-        loading();
-
-        processing();
-
-        /*String xml = convertDocToXML(fromFile);
-        if (StringUtils.isNotBlank(xml)) {
-            convertXMLToHTML(xml, toFile);
-        }*/
 
         finished();
     }
@@ -243,7 +227,7 @@ public class DocToPDFConverter extends Converter {
     }
 
     /**
-     * 貌似需要安装 micro office
+     * 需要安装 micro office，没有测试
      * https://github.com/Nabarun/DocToPdfConverter_AWSJava/blob/master/src/main/java/DocToPdfConversion.java
      *
      * @param inputStream
@@ -279,58 +263,5 @@ public class DocToPDFConverter extends Converter {
         byteArrayOutputStream.close();
 
     }
-
-
-    protected static String FONT = "src/main/resources/malgun.ttf";
-
-    /**
-     * 转换效果不好
-     * https://github.com/bjsystems/doc2pdf/blob/master/src/main/java/com/bj/doc2pdf/convert/DocToPDFConverter.java
-     */
-    /*public void convertDocToPdf(InputStream inputStream, OutputStream outputStream) {
-        Document document = new Document();
-
-        try {
-            POIFSFileSystem fs = new POIFSFileSystem(inputStream);
-            HWPFDocument doc = new HWPFDocument(fs);
-            WordExtractor we = new WordExtractor(doc);
-
-            PdfWriter writer = PdfWriter.getInstance(document, outputStream);
-
-            Range range = doc.getRange();
-            document.open();
-            writer.setPageEmpty(true);
-            document.newPage();
-            writer.setPageEmpty(true);
-            BaseFont bf = BaseFont.createFont(FONT, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-
-            String[] paragraphs = we.getParagraphText();
-            for (int i = 0; i < paragraphs.length; i++) {
-
-                org.apache.poi.hwpf.usermodel.Paragraph pr = range.getParagraph(i);
-                // CharacterRun run = pr.getCharacterRun(i);
-                // run.setBold(true);
-                // run.setCapitalized(true);
-                // run.setItalic(true);
-                paragraphs[i] = paragraphs[i].replaceAll("\\cM?\r?\n", "");
-                System.out.println("Length:" + paragraphs[i].length());
-                System.out.println("Paragraph" + i + ": " + paragraphs[i].toString());
-
-                // add the paragraph to the document
-//                document.add(new Paragraph(paragraphs[i]));
-                document.add(new Paragraph(paragraphs[i], new Font(bf, 12)));
-            }
-
-            System.out.println("Document testing completed");
-
-        } catch (Exception e) {
-            System.out.println("Exception during test");
-            e.printStackTrace();
-        } finally {
-            // close the document
-            document.close();
-        }
-
-    }*/
 
 }
